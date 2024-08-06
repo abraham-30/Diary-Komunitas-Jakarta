@@ -435,38 +435,38 @@ class _BerandaPageState extends State<BerandaPage> {
                             ),
                           ),
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width * 0.07
-                          ),
-                          child: PageView.builder(
-                            controller: _pageController,
-                            onPageChanged: (int page) {
-                              setState(() {
-                                _currentPage = page % _totalImages;
-                              });
-                            },
-                            itemBuilder: (context, index) {
-                              final imageIndex = index % _totalImages;
-                              return _imageAssets[imageIndex];
-                            },
-                          ),
-                        ),
+                        // Container(
+                        //   height: MediaQuery.of(context).size.height * 0.2,
+                        //   padding: EdgeInsets.symmetric(
+                        //     horizontal: MediaQuery.of(context).size.width * 0.07
+                        //   ),
+                        //   child: PageView.builder(
+                        //     controller: _pageController,
+                        //     onPageChanged: (int page) {
+                        //       setState(() {
+                        //         _currentPage = page % _totalImages;
+                        //       });
+                        //     },
+                        //     itemBuilder: (context, index) {
+                        //       final imageIndex = index % _totalImages;
+                        //       return _imageAssets[imageIndex];
+                        //     },
+                        //   ),
+                        // ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            _totalImages,
-                            (index) => Container(
-                              width: (MediaQuery.of(context).size.width * 0.8) / _totalImages,
-                              height: MediaQuery.of(context).size.height * 0.005,
-                              color: _currentPage == index ?AppColors.dkj: AppColors.gray,
-                            ),
-                          ),
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: List.generate(
+                        //     _totalImages,
+                        //     (index) => Container(
+                        //       width: (MediaQuery.of(context).size.width * 0.8) / _totalImages,
+                        //       height: MediaQuery.of(context).size.height * 0.005,
+                        //       color: _currentPage == index ?AppColors.dkj: AppColors.gray,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

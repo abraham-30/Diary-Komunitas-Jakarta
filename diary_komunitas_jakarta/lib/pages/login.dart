@@ -162,7 +162,7 @@ class LoginPage extends StatelessWidget {
                           'Daftar Disini',
                           style: TextStyle(
                             fontFamily: AppTextStyles.fontFamilyPrimary,
-                            fontSize: AppTextStyles.label2,
+                            fontSize: AppTextStyles.label1,
                             fontWeight: FontWeight.bold,
                             color: AppColors.dkj,
                             decoration: TextDecoration.underline,
