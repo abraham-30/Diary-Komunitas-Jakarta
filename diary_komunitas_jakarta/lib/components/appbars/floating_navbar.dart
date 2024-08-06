@@ -1,4 +1,5 @@
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class FloatingBottomNavBar extends StatefulWidget {
@@ -56,15 +57,15 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
           MediaQuery.of(context).size.height * 0.02
         ),
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.075,
+          height: MediaQuery.of(context).size.height * 0.068,
           decoration: BoxDecoration(
             color: AppColors.dkj,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.3),
-                spreadRadius: 3,
-                blurRadius: 4,
+                spreadRadius: 1,
+                blurRadius: 2,
                 offset: const Offset(0, 3),
               )
             ]
@@ -109,7 +110,7 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
             style: TextStyle(
               fontFamily: 'PlusJakarta',
               color: isSelected ? Colors.white : Colors.white.withOpacity(0.6),
-              fontSize: MediaQuery.of(context).size.width * 0.03,
+              fontSize: AppTextStyles.label3,
             ),
           ),
           SizedBox(

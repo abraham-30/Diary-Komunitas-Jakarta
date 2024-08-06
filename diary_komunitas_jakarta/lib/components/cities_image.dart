@@ -1,3 +1,4 @@
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CityImage extends StatelessWidget {
@@ -44,10 +45,11 @@ class CityImage extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             child: Text(
               cityName,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
-                fontSize: MediaQuery.of(context).size.width * 0.05,
-                fontWeight: FontWeight.w500
+                fontSize: AppTextStyles.subHeader,
+                fontWeight: FontWeight.bold,
+                fontFamily: AppTextStyles.fontFamilyPrimary
               ),
             ),
           )

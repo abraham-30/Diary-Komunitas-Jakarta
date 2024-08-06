@@ -1,4 +1,5 @@
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ArticleImage extends StatelessWidget {
@@ -25,12 +26,13 @@ class ArticleImage extends StatelessWidget {
         ),
         RichText(
           textAlign: TextAlign.justify,
-          text: TextSpan(
+          text: const TextSpan(
             style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.035,
-              color: AppColors.darkerGray
+              color: AppColors.darkerGray,
+              fontSize: AppTextStyles.label2,
+              fontFamily: AppTextStyles.fontFamilyPrimary
             ),
-            children: const <TextSpan>[
+            children: <TextSpan>[
               TextSpan(
                 text: 
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies dolor vitae sem tristique, suscipit feugiat sem convallis',
@@ -40,28 +42,29 @@ class ArticleImage extends StatelessWidget {
         ),
         Divider(
           height: MediaQuery.of(context).size.height * 0.007,
-          color: AppColors.lighterGray,
+          color: AppColors.gray,
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               '27 Mei 2024',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.025,
-                    fontFamily: 'PlusJakarta',
+                    color: AppColors.darkerGray,
+                    fontSize: AppTextStyles.label3,
+                    fontFamily: AppTextStyles.fontFamilyPrimary,
                     fontWeight: FontWeight.normal,
-                    color: AppColors.darkerGray
                 )
             ),
             Text(
               'Setiabudi, Jakarta Selatan',
                 textAlign: TextAlign.right,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.025,
+                    color: AppColors.darkerGray,
+                    fontSize: AppTextStyles.label3,
+                    fontFamily: AppTextStyles.fontFamilyPrimary,
                     fontWeight: FontWeight.normal,
-                    color: AppColors.darkerGray
                 )
             ),
           ],

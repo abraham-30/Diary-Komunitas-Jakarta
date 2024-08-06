@@ -1,10 +1,21 @@
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
 import 'package:diary_komunitas_jakarta/components/appbars/custom_app_bar.dart';
 import 'package:diary_komunitas_jakarta/components/article_image.dart';
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DetailArticle extends StatefulWidget {
-  const DetailArticle({super.key});
+  final String title;
+  final String author;
+  final String date;
+  final String location;
+  const DetailArticle({
+    this.title = 'Lorem Ipsum Dolor Sit Amet',
+    this.author = 'Paundra',
+    this.date = '6 Agustus 2024',
+    this.location = 'BCA Learning Institute',
+    super.key
+  });
 
   @override
   State<DetailArticle> createState() => _DetailArticleState();
@@ -23,7 +34,7 @@ class _DetailArticleState extends State<DetailArticle> {
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.35,
                   width: MediaQuery.of(context).size.width * 1,
                   child: const Image(
@@ -40,8 +51,8 @@ class _DetailArticleState extends State<DetailArticle> {
                       end: Alignment.topCenter,
                       colors: [
                         Colors.white.withOpacity(1),
-                        Color.fromRGBO(178, 178, 178, 1).withOpacity(0.2),
-                        Color.fromRGBO(178, 178, 178, 1).withOpacity(0),
+                        const Color.fromRGBO(178, 178, 178, 1).withOpacity(0.2),
+                        const Color.fromRGBO(178, 178, 178, 1).withOpacity(0),
                       ],
                     ),
                   ),
@@ -58,12 +69,13 @@ class _DetailArticleState extends State<DetailArticle> {
                       MediaQuery.of(context).size.height * 0.01
                     ),
                     child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                      widget.title,
                       style: TextStyle(
-                        height: MediaQuery.of(context).size.height * 0.0013,
-                        fontSize: MediaQuery.of(context).size.width * 0.067,
+                        height: MediaQuery.of(context).size.height * 0.0012,
+                        color: AppColors.dkj,
+                        fontSize: AppTextStyles.header,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.dkj
+                        fontFamily: AppTextStyles.fontFamilyPrimary
                       )
                     ),
                   ),
@@ -85,22 +97,22 @@ class _DetailArticleState extends State<DetailArticle> {
                     children: [
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Ditulis oleh ',
                             style: TextStyle(
-                              fontFamily: 'PlusJakarta',
-                              fontSize: MediaQuery.of(context).size.width * 0.043,
+                              color: Colors.black,
+                              fontSize: AppTextStyles.label2,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
+                              fontFamily: AppTextStyles.fontFamilyPrimary
                             )
                           ),
                           Text(
-                            'Felix Gustino',
-                            style: TextStyle(
-                              fontFamily: 'PlusJakarta',
-                              fontSize: MediaQuery.of(context).size.width * 0.043,
+                            widget.author,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: AppTextStyles.label2,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black
+                              fontFamily: AppTextStyles.fontFamilyPrimary,
                             )
                           ),
                         ],
@@ -109,23 +121,23 @@ class _DetailArticleState extends State<DetailArticle> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '27 Mei 2024',
+                            widget.date,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'PlusJakarta',
-                              fontSize: MediaQuery.of(context).size.width * 0.035,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: AppTextStyles.label3,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
+                              fontFamily: AppTextStyles.fontFamilyPrimary,
                             )
                           ),
                           Text(
-                            'Setiabudi, Jakarta Selatan',
+                            widget.location,
                               textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontFamily: 'PlusJakarta',
-                                fontSize: MediaQuery.of(context).size.width * 0.035,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: AppTextStyles.label3,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
+                                fontFamily: AppTextStyles.fontFamilyPrimary,
                               )
                           ),
                         ],
@@ -138,12 +150,13 @@ class _DetailArticleState extends State<DetailArticle> {
                   children: [
                     RichText(
                       textAlign: TextAlign.justify,
-                      text: TextSpan(
+                      text: const TextSpan(
                         style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.035,
-                          color: Colors.black
+                          color: Colors.black,
+                          fontSize: AppTextStyles.label2,
+                          fontFamily: AppTextStyles.fontFamilyPrimary
                         ),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                             text:
                               '(Lorem ipsum)',
@@ -161,7 +174,7 @@ class _DetailArticleState extends State<DetailArticle> {
                               'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
                               'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
                               'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
-                              'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                              'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n',
                           ),                            
                         ]
                       )
@@ -171,22 +184,24 @@ class _DetailArticleState extends State<DetailArticle> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Lorem Ipsum",
                       style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.043,
+                        color: Colors.black,
+                        fontSize: AppTextStyles.label1,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black
+                        fontFamily: AppTextStyles.fontFamilyPrimary
                       ),
                     ),
                     RichText(
                       textAlign: TextAlign.justify,
-                      text: TextSpan(
+                      text: const TextSpan(
                         style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.035,
-                          color: Colors.black
+                          color: Colors.black,
+                          fontSize: AppTextStyles.label2,
+                          fontFamily: AppTextStyles.fontFamilyPrimary,
                         ),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                             text: 
                             'Cras sed leo quis nulla dictum sagittis sed ut dui. '
@@ -212,22 +227,24 @@ class _DetailArticleState extends State<DetailArticle> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Lorem Ipsum",
                       style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.043,
+                        color: Colors.black,
+                        fontSize: AppTextStyles.label1,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black
+                        fontFamily: AppTextStyles.fontFamilyPrimary
                       ),
                     ),
                     RichText(
                       textAlign: TextAlign.justify,
-                      text: TextSpan(
+                      text: const TextSpan(
                         style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.035,
-                          color: Colors.black
+                          color: Colors.black,
+                          fontSize: AppTextStyles.label2,
+                          fontFamily: AppTextStyles.fontFamilyPrimary
                         ),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
                             text: 
                             'Vivamus sagittis lacus vitae lobortis cursus. '
@@ -243,7 +260,7 @@ class _DetailArticleState extends State<DetailArticle> {
                             'Pellentesque viverra eget enim nec porttitor.'
                           ),   
                           TextSpan(
-                            text: '\n',
+                            text: '\n\n',
                           ),
                           TextSpan(
                             text: 

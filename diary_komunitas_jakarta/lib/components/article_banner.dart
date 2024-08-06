@@ -1,7 +1,17 @@
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ArticleBanner extends StatefulWidget {
-  const ArticleBanner({super.key});
+  final String title;
+  final String author;
+  final String date;
+
+  const ArticleBanner({
+    this.title = 'null',
+    this.author = 'Felix Gustino',
+    this.date = 'Senin, 27 Mei 2025',
+    super.key
+  });
 
   @override
   State<ArticleBanner> createState() => _ArticleBannerState();
@@ -44,11 +54,12 @@ class _ArticleBannerState extends State<ArticleBanner> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                  style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                  widget.title,
+                  style: const TextStyle(
                     color: Colors.white,
+                    fontSize: AppTextStyles.label1,
                     fontWeight: FontWeight.bold,
+                    fontFamily: AppTextStyles.fontFamilyPrimary
                   ),
                 ),
                 const Spacer(),
@@ -56,17 +67,21 @@ class _ArticleBannerState extends State<ArticleBanner> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Felix Gustino",
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.035,
-                        color: Colors.white
+                      widget.author,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: AppTextStyles.label3,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: AppTextStyles.fontFamilyPrimary
                       ),              
                     ),
                     Text(
-                      "Senin, 27 Mei 2024",
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.035,
-                        color: Colors.white
+                      widget.date,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: AppTextStyles.label3,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: AppTextStyles.fontFamilyPrimary
                       ),                
                     )
                   ],

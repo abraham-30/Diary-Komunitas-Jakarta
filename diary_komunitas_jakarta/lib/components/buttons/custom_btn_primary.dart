@@ -33,31 +33,23 @@ class CustomButtonPrimary extends StatelessWidget {
           width: borderWidth,
         ),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 2,
-            spreadRadius: 1,
-            offset: const Offset(0, 1),
-          )
-        ]   
       ),
       child: ElevatedButton(
         onPressed: onPressed,
-        style: FilledButton.styleFrom(
+        style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
           backgroundColor: buttonColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          elevation: 0,
+          elevation: 2,
         ),
         child: Text(
           buttonText,
           style: TextStyle(
             fontFamily: 'PlusJakarta',
             fontSize: dynamicFontSize,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.bold,
             color: textColor
           ),
         ),

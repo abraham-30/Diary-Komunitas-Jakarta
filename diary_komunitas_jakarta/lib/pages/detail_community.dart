@@ -1,10 +1,28 @@
 import 'package:diary_komunitas_jakarta/components/buttons/custom_btn_primary.dart';
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
 import 'package:diary_komunitas_jakarta/components/appbars/custom_app_bar.dart';
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DetailCommunity extends StatefulWidget {
-  const DetailCommunity({super.key});
+  final String title;
+  final String date;
+  final String time;
+  final String place;
+  final String location;
+  final String person;
+  final String price;
+
+  const DetailCommunity({
+    this.title = 'Lorem Ipsum Dolor Sit Amet',
+    this.date = '6 Agustus 2024',
+    this.time = '10:00 - 12:00',
+    this.place = 'Sentul City',
+    this.location = 'BCA Learning Institute',
+    this.person = 'Paundra',
+    this.price = '150.000',
+    super.key
+  });
 
   @override
   State<DetailCommunity> createState() => _DetailCommunityState();
@@ -58,7 +76,7 @@ class _DetailCommunityState extends State<DetailCommunity> {
                       MediaQuery.of(context).size.height * 0.01
                     ),
                     child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                      widget.title,
                       style: TextStyle(
                         height: MediaQuery.of(context).size.height * 0.0013,
                         fontSize: MediaQuery.of(context).size.width * 0.067,
@@ -97,18 +115,20 @@ class _DetailCommunityState extends State<DetailCommunity> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Sabtu, 18 Mei 2024",
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.width * 0.043,
+                                  widget.date,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: AppTextStyles.label2,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black
+                                    fontFamily: AppTextStyles.fontFamilyPrimary
                                   ),
                                 ),
                                 Text(
-                                  "10.30 - 11.30",
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.width * 0.035,
-                                    color: AppColors.darkerGray
+                                  widget.time,
+                                  style: const TextStyle(
+                                    color: AppColors.darkerGray,
+                                    fontSize: AppTextStyles.label3,
+                                    fontFamily: AppTextStyles.fontFamilyPrimary
                                   ),
                                 ),
                               ],
@@ -132,20 +152,22 @@ class _DetailCommunityState extends State<DetailCommunity> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Adhiyaksa Club",
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.width * 0.043,
+                                  widget.place,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: AppTextStyles.label2,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black
+                                    fontFamily: AppTextStyles.fontFamilyPrimary
                                   ),
                                 ),
                                 Text(
-                                  "Jalan Adhyaksa, Lebak Bulus, Jakarta Selatan",
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.width * 0.035,
-                                    color: AppColors.darkerGray
+                                  widget.location,
+                                  style: const TextStyle(
+                                    color: AppColors.darkerGray,
+                                    fontSize: AppTextStyles.label3,
+                                    fontFamily: AppTextStyles.fontFamilyPrimary
                                   ),
-                                )
+                                ),
                               ],
                             )
                           ],
@@ -164,13 +186,14 @@ class _DetailCommunityState extends State<DetailCommunity> {
                               ),
                             ),
                             Text(
-                              "joletothemoon",
-                              style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.width * 0.043,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black
-                                ),
-                            )
+                              widget.person,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: AppTextStyles.label2,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: AppTextStyles.fontFamilyPrimary
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -187,13 +210,14 @@ class _DetailCommunityState extends State<DetailCommunity> {
                               ),
                             ),
                             Text(
-                              "125.000",
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.width * 0.043,
+                              widget.price,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: AppTextStyles.label2,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black
+                                fontFamily: AppTextStyles.fontFamilyPrimary
                               ),
-                            )
+                            ),
                           ],
                         )
                       ],
@@ -204,16 +228,18 @@ class _DetailCommunityState extends State<DetailCommunity> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding:EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.07,
-                        vertical: MediaQuery.of(context).size.height * 0.01,
+                      padding:EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.07,
+                        right: MediaQuery.of(context).size.width * 0.07,
+                        top: MediaQuery.of(context).size.height * 0.015,
                       ),
-                      child: Text(
+                      child: const Text(
                         "Foto Komunitas",
                         style: TextStyle(
                           color: AppColors.dkj,
-                          fontWeight: FontWeight.w500,
-                          fontSize: MediaQuery.of(context).size.width * 0.057,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AppTextStyles.smallHeader,
+                          fontFamily: AppTextStyles.fontFamilyPrimary
                         ),
                       ),
                     ),
@@ -279,26 +305,28 @@ class _DetailCommunityState extends State<DetailCommunity> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height * 0.01
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.015
                         ), 
-                        child: Text(
+                        child: const Text(
                         "Apa Yang Ada di Komunitas Ini?",
                         style: TextStyle(
                           color: AppColors.dkj,
-                          fontWeight: FontWeight.w500,
-                          fontSize: MediaQuery.of(context).size.width * 0.057,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AppTextStyles.smallHeader,
+                          fontFamily: AppTextStyles.fontFamilyPrimary
                         ),
                       ),
                       ),
                       RichText(
                         textAlign: TextAlign.justify,
-                        text: TextSpan(
+                        text: const TextSpan(
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.035,
-                            color: Colors.black
+                            color: Colors.black,
+                            fontSize: AppTextStyles.label2,
+                            fontFamily: AppTextStyles.fontFamilyPrimary
                           ),
-                          children: const <TextSpan>[
+                          children: <TextSpan>[
                             TextSpan(
                               text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
                             ),
@@ -315,26 +343,13 @@ class _DetailCommunityState extends State<DetailCommunity> {
                     MediaQuery.of(context).size.width * 0.07,
                     MediaQuery.of(context).size.height * 0.03
                   ),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 1,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 4,
-                          blurRadius: 4,
-                          offset: const Offset(0, 0),
-                        )
-                      ]
-                    ),
-                    child: CustomButtonPrimary(
-                      onPressed: (){}, 
-                      buttonText: "Bergabung", 
-                      textColor: Colors.white, 
-                      buttonColor: AppColors.dkj, 
-                      borderColor: Colors.transparent, 
-                      borderWidth: 0
-                    )
+                  child: CustomButtonPrimary(
+                    onPressed: (){}, 
+                    buttonText: "Bergabung", 
+                    textColor: Colors.white, 
+                    buttonColor: AppColors.dkj, 
+                    borderColor: Colors.transparent, 
+                    borderWidth: 0
                   )
                 )
               ],

@@ -1,8 +1,20 @@
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
 
 class CommunityCard155165 extends StatefulWidget {
-  const CommunityCard155165({super.key});
+  final String title;
+  final String date;
+  final String time;
+  final String location;
+  
+  const CommunityCard155165({
+    this.title = 'null',
+    this.date = 'null',
+    this.time = 'null',
+    this.location = 'null',
+    super.key
+  });
 
   @override
   State<CommunityCard155165> createState() => _CommunityCard155165State();
@@ -50,28 +62,50 @@ class _CommunityCard155165State extends State<CommunityCard155165> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Selasa, 28 Mei 2024",
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.025,
-                          color: Colors.black
+                        widget.date,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: AppTextStyles.label4,
+                          fontFamily: AppTextStyles.fontFamilyPrimary
                         ),
                       ),
                       Text(
-                        "Lorem Ipsum",
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.035,
+                        widget.title,
+                        style: const TextStyle(
+                          color: AppColors.dkj,
+                          fontSize: AppTextStyles.label3,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.dkj
+                          fontFamily: AppTextStyles.fontFamilyPrimary
                         ),
                       ),
-                      Text(
-                        "12.00 - 14.00 |  Lorem Ipsum",
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.025,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.darkerGray
-                        ),
-                      ),
+                      Row(
+                        children: [
+                          Text(
+                            widget.time,
+                            style: const TextStyle(
+                              color: AppColors.darkerGray,
+                              fontSize: AppTextStyles.label4,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Text(
+                            ' | ',
+                            style: TextStyle(
+                              color: AppColors.darkerGray,
+                              fontSize: AppTextStyles.label4,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            widget.location,
+                            style: const TextStyle(
+                              color: AppColors.darkerGray,
+                              fontSize: AppTextStyles.label4,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   )
                 )

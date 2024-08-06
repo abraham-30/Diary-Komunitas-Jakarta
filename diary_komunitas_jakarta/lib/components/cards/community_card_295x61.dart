@@ -1,8 +1,20 @@
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
 
 class CommunityCard29561 extends StatefulWidget {
-  const CommunityCard29561({super.key});
+  final String title;
+  final String date;
+  final String time;
+  final String location;
+
+  const CommunityCard29561({
+    this.title = 'null',
+    this.date = 'null',
+    this.time = 'null',
+    this.location = 'null',
+    super.key
+  });
 
   @override
   State<CommunityCard29561> createState() => _CommunityCard29561State();
@@ -42,27 +54,52 @@ class _CommunityCard29561State extends State<CommunityCard29561> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Selasa, 28 May 2024",
-                style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.025,
-                  color: Colors.black
-                ),
-                ),
-              Text(
-                "Lorem Ipsum Dolor Sit Amet",
-                style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.035,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.dkj
+                widget.date,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: AppTextStyles.label4,
+                  fontFamily: AppTextStyles.fontFamilyPrimary
                 ),
               ),
               Text(
-                "12.00 - 14.00 | Jakarta Sport Center",
-                style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.025,
+                widget.title,
+                style: const TextStyle(
+                  color: AppColors.dkj,
+                  fontSize: AppTextStyles.label3,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.darkerGray
+                  fontFamily: AppTextStyles.fontFamilyPrimary
                 ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    widget.time,
+                    style: const TextStyle(
+                      color: AppColors.darkerGray,
+                      fontSize: AppTextStyles.label4,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: AppTextStyles.fontFamilyPrimary
+                    ),
+                  ),
+                  const Text(
+                    ' | ',
+                    style: TextStyle(
+                      color: AppColors.darkerGray,
+                      fontSize: AppTextStyles.label4,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: AppTextStyles.fontFamilyPrimary
+                    ),
+                  ),
+                  Text(
+                    widget.location,
+                    style: const TextStyle(
+                      color: AppColors.darkerGray,
+                      fontSize: AppTextStyles.label4,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: AppTextStyles.fontFamilyPrimary
+                    ),
+                  ),
+                ],
               )
             ],
           )

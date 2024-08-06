@@ -16,7 +16,7 @@ class CenteredAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       forceMaterialTransparency: true,      
       automaticallyImplyLeading: isBackButton,
-      title: SizedBox(
+      title: Container(
         height: AppBar().preferredSize.height,
         child: const Image(
           image: AssetImage("assets/images/logo_DKJ_black.png"),

@@ -1,3 +1,4 @@
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ButtonCategory extends StatelessWidget {
@@ -17,7 +18,7 @@ class ButtonCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.03,
+      height: MediaQuery.of(context).size.height * 0.025,
       constraints: BoxConstraints(
         minWidth: MediaQuery.of(context).size.width * 0.25,
       ),
@@ -45,6 +46,9 @@ class ButtonCategory extends StatelessWidget {
           buttonText,
           style: const TextStyle(
             color: Colors.white,
+            fontSize: AppTextStyles.label3,
+            fontWeight: FontWeight.bold,
+            fontFamily: AppTextStyles.fontFamilyPrimary,
           ),
         ), 
       )

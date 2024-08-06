@@ -1,8 +1,10 @@
 import 'package:diary_komunitas_jakarta/components/buttons/btn_category.dart';
 import 'package:diary_komunitas_jakarta/components/cities_image.dart';
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:diary_komunitas_jakarta/pages/article.dart';
 import 'package:diary_komunitas_jakarta/pages/community.dart';
+import 'package:diary_komunitas_jakarta/pages/pelaporan.dart';
 import 'package:diary_komunitas_jakarta/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -62,10 +64,10 @@ class PillTextWidget extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontFamily: 'PlusJakarta',
           color: textColor,
-          fontSize: MediaQuery.of(context).size.width * 0.03,
           fontWeight: FontWeight.bold,
+          fontSize: AppTextStyles.label3,
+          fontFamily: AppTextStyles.fontFamilyPrimary,
         ),
       ),
     );
@@ -375,6 +377,10 @@ class _BerandaPageState extends State<BerandaPage> {
           );
           break;
         case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PelaporanPage())
+          );
           break;
         case 4:
           Navigator.push(
@@ -401,241 +407,211 @@ class _BerandaPageState extends State<BerandaPage> {
           ),
         ),
       ),
-       body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height * 0.015
-                  ),
-                  child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.07,
-                          vertical: MediaQuery.of(context).size.height * 0.01
-                        ),
-                        child: Text(
-                          'Hai, Jakartans',
-                          style: TextStyle(
-                            fontFamily: 'PlusJakarta',
-                            fontSize: MediaQuery.of(context).size.width * 0.067,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.dkj,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.07
-                        ),
-                        child: PageView.builder(
-                          controller: _pageController,
-                          onPageChanged: (int page) {
-                            setState(() {
-                              _currentPage = page % _totalImages;
-                            });
-                          },
-                          itemBuilder: (context, index) {
-                            final imageIndex = index % _totalImages;
-                            return _imageAssets[imageIndex];
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          _totalImages,
-                          (index) => Container(
-                            width: (MediaQuery.of(context).size.width * 0.8) / _totalImages,
-                            height: MediaQuery.of(context).size.height * 0.005,
-                            color: _currentPage == index ?AppColors.dkj: AppColors.gray,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height * 0.015
-                  ),
-                  child: Column(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height * 0.015
+                    ),
+                    child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.07
-                        ),
-                        child: Text(
-                          'Lalu Lintas',
-                          style: TextStyle(
-                            fontFamily: 'PlusJakarta',
-                            fontSize: MediaQuery.of(context).size.width * 0.057,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.dkj,
-                          ),
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Padding(
+                      children: [
+                        Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: MediaQuery.of(context).size.width * 0.07,
                             vertical: MediaQuery.of(context).size.height * 0.01
                           ),
-                          child: Row(
-                            children: [
-                              ButtonCategory(
-                                onPressed: (){
-                                  setState(() {
-                                    _activeButton = "Pusat";
-                                  });
-                                },
-                                buttonText: "Pusat", 
-                                backgroundColor: AppColors.jakpus, 
-                                isActive: _activeButton == "Pusat",
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.015
-                              ),                      
-                              ButtonCategory(
-                                onPressed: (){
-                                  setState(() {
-                                    _activeButton = "Utara";
-                                  });
-                                },
-                                buttonText: "Utara", 
-                                backgroundColor: AppColors.jakut, 
-                                isActive: _activeButton == "Utara",
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.015
-                              ),      
-                              ButtonCategory(
-                                onPressed: (){
-                                  setState(() {
-                                    _activeButton = "Barat";
-                                  });
-                                },
-                                buttonText: "Barat", 
-                                backgroundColor: AppColors.jakbar, 
-                                isActive: _activeButton == "Barat",
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.015
-                              ),      
-                              ButtonCategory(
-                                onPressed: (){
-                                  setState(() {
-                                    _activeButton = "Timur";
-                                  });
-                                },
-                                buttonText: "Timur", 
-                                backgroundColor: AppColors.jaktim, 
-                                isActive: _activeButton == "Timur",
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.015
-                              ),      
-                              ButtonCategory(
-                                onPressed: (){
-                                  setState(() {
-                                    _activeButton = "Selatan";
-                                  });
-                                },
-                                buttonText: "Selatan", 
-                                backgroundColor: AppColors.jaksel, 
-                                isActive: _activeButton == "Selatan",
-                              ),
-                            ],
+                          child: const Text(
+                            'Hai, Jakartans',
+                            style: TextStyle(
+                              color: AppColors.dkj,
+                              fontSize: AppTextStyles.header,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: AppTextStyles.fontFamilyPrimary,
+                            ),
                           ),
-                        )
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.07
+                          ),
+                          child: PageView.builder(
+                            controller: _pageController,
+                            onPageChanged: (int page) {
+                              setState(() {
+                                _currentPage = page % _totalImages;
+                              });
+                            },
+                            itemBuilder: (context, index) {
+                              final imageIndex = index % _totalImages;
+                              return _imageAssets[imageIndex];
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                            _totalImages,
+                            (index) => Container(
+                              width: (MediaQuery.of(context).size.width * 0.8) / _totalImages,
+                              height: MediaQuery.of(context).size.height * 0.005,
+                              color: _currentPage == index ?AppColors.dkj: AppColors.gray,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    ..._buildListItems(),
-                    ],
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.07,
-                    vertical: MediaQuery.of(context).size.height * 0.015
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Yang Baru di Jakarta!',
-                        style: TextStyle(
-                          fontFamily: 'PlusJakarta',
-                          fontSize: MediaQuery.of(context).size.width * 0.057,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.dkj,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height * 0.015
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.07
+                          ),
+                          child: const Text(
+                            'Lalu Lintas',
+                            style: TextStyle(
+                              color: AppColors.dkj,
+                              fontSize: AppTextStyles.smallHeader,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: AppTextStyles.fontFamilyPrimary,
+                            ),
+                          ),
                         ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: MediaQuery.of(context).size.width * 0.07,
+                              vertical: MediaQuery.of(context).size.height * 0.01
+                            ),
+                            child: Row(
+                              children: [
+                                ButtonCategory(
+                                  onPressed: (){
+                                    setState(() {
+                                      _activeButton = "Pusat";
+                                    });
+                                  },
+                                  buttonText: "Pusat", 
+                                  backgroundColor: AppColors.jakpus, 
+                                  isActive: _activeButton == "Pusat",
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.015
+                                ),                      
+                                ButtonCategory(
+                                  onPressed: (){
+                                    setState(() {
+                                      _activeButton = "Utara";
+                                    });
+                                  },
+                                  buttonText: "Utara", 
+                                  backgroundColor: AppColors.jakut, 
+                                  isActive: _activeButton == "Utara",
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.015
+                                ),      
+                                ButtonCategory(
+                                  onPressed: (){
+                                    setState(() {
+                                      _activeButton = "Barat";
+                                    });
+                                  },
+                                  buttonText: "Barat", 
+                                  backgroundColor: AppColors.jakbar, 
+                                  isActive: _activeButton == "Barat",
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.015
+                                ),      
+                                ButtonCategory(
+                                  onPressed: (){
+                                    setState(() {
+                                      _activeButton = "Timur";
+                                    });
+                                  },
+                                  buttonText: "Timur", 
+                                  backgroundColor: AppColors.jaktim, 
+                                  isActive: _activeButton == "Timur",
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.015
+                                ),      
+                                ButtonCategory(
+                                  onPressed: (){
+                                    setState(() {
+                                      _activeButton = "Selatan";
+                                    });
+                                  },
+                                  buttonText: "Selatan", 
+                                  backgroundColor: AppColors.jaksel, 
+                                  isActive: _activeButton == "Selatan",
+                                ),
+                              ],
+                            ),
+                          )
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height * 0.01
-                        ),
-                        child: _buildCustomDropdown()
-                      ),
-                      ..._buildCategoryItems(),
-                    ],
+                      ..._buildListItems(),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.15
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.07,
+                      vertical: MediaQuery.of(context).size.height * 0.015
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Yang Baru di Jakarta!',
+                          style: TextStyle(
+                            color: AppColors.dkj,
+                            fontSize: AppTextStyles.smallHeader,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: AppTextStyles.fontFamilyPrimary,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height * 0.01
+                          ),
+                          child: _buildCustomDropdown()
+                        ),
+                        ..._buildCategoryItems(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.15
+                  ),
+                ],
+              ),
             ),
-          ),
-          FloatingBottomNavBar(
-            selectedIndex: _selectedIndex,
-            onItemTapped: _onItemTapped,
-          ),
-        ],
-      ),
+            FloatingBottomNavBar(
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+            ),
+          ],
+        ),
+      )
     );
   }
-
-  // Widget _buildButton(String text, Color color) {
-  //   bool isActive = _activeButton == text;
-  //   return ElevatedButton(
-  //     onPressed: () {
-  //       setState(() {
-  //         _activeButton = text;
-  //       });
-  //     },
-  //     style: ButtonStyle(
-  //       backgroundColor: MaterialStateProperty.all(
-  //         isActive ? color.withOpacity(0.7) : color, // Darker when active
-  //       ),
-  //       foregroundColor: MaterialStateProperty.all(Colors.white),
-  //       shape: MaterialStateProperty.all(
-  //         RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(10),
-  //         ),
-  //       ),
-  //       padding: MaterialStateProperty.all(
-  //         EdgeInsets.symmetric(horizontal: 15,vertical: 4),
-  //       ),
-  //       minimumSize: MaterialStateProperty.all(Size(0, 32)),
-  //     ),
-  //      child: Text(
-  //       text,
-  //       style: TextStyle(fontSize: 14,
-  //         fontFamily: 'PlusJakarta',
-  //       ), // Reduced font size
-  //     ),
-  //   );
-  // }
 
  List<Widget> _buildListItems() {
     return [
@@ -676,10 +652,10 @@ class _BerandaPageState extends State<BerandaPage> {
                           width: MediaQuery.of(context).size.width * 0.05,
                           child: Text(
                             '${index + 1}',
-                            style: TextStyle(
-                              fontFamily: 'PlusJakarta',
-                              fontSize: MediaQuery.of(context).size.width * 0.043,  
+                            style: const TextStyle(
                               color: AppColors.dkj,
+                              fontSize: AppTextStyles.label1,  
+                              fontFamily: AppTextStyles.fontFamilyPrimary,
                             ),
                           ),
                         ),
@@ -698,19 +674,19 @@ class _BerandaPageState extends State<BerandaPage> {
                                 children: [
                                   Text(
                                     item['title']!,
-                                    style: TextStyle(
-                                      fontFamily: 'PlusJakarta',
-                                      fontSize: MediaQuery.of(context).size.width * 0.043,  
-                                      fontWeight: FontWeight.bold
+                                    style: const TextStyle(
+                                      fontSize: AppTextStyles.label1,  
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: AppTextStyles.fontFamilyPrimary,
                                     ),
                                   ),
                                   Text(
                                     item['subtitle']!,
                                     textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                      fontFamily: 'PlusJakarta',
-                                      fontSize: MediaQuery.of(context).size.width * 0.035,
+                                    style: const TextStyle(
                                       color: AppColors.darkerGray,
+                                      fontSize: AppTextStyles.label3,
+                                      fontFamily: AppTextStyles.fontFamilyPrimary,
                                     ),
                                   ),
                                 ],
@@ -731,9 +707,9 @@ class _BerandaPageState extends State<BerandaPage> {
                             Text(
                               _activeButton,
                               style: TextStyle(
-                                fontFamily: 'PlusJakarta',
-                                fontSize: MediaQuery.of(context).size.width * 0.025,
                                 color: item['color']!,
+                                fontSize: AppTextStyles.label4,
+                                fontFamily: AppTextStyles.fontFamilyPrimary,
                               ),
                             ),
                           ],
@@ -778,18 +754,18 @@ class _BerandaPageState extends State<BerandaPage> {
               children: [
                 Text(
                   item['title']!,
-                  style: TextStyle(
-                    fontFamily: 'PlusJakarta',
-                    fontSize: MediaQuery.of(context).size.width * 0.043,
+                  style: const TextStyle(
+                    fontSize: AppTextStyles.label1,
                     fontWeight: FontWeight.bold,
+                    fontFamily: AppTextStyles.fontFamilyPrimary,
                   ),
                 ),
                 Text(
                   item['subtitle']!,
-                  style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.035,
-                    fontFamily: 'PlusJakarta',
+                  style: const TextStyle(
+                    fontSize: AppTextStyles.label3,
                     color: AppColors.darkerGray,
+                    fontFamily: AppTextStyles.fontFamilyPrimary,
                   ),
                 ),
                 SizedBox(
@@ -805,9 +781,9 @@ class _BerandaPageState extends State<BerandaPage> {
                     Text(
                       item['location']!,
                       style: TextStyle(
-                        fontFamily: 'PlusJakarta',
-                        fontSize: MediaQuery.of(context).size.width * 0.025,
+                        fontSize: AppTextStyles.label4,
                         color: item['color']!,
+                        fontFamily: AppTextStyles.fontFamilyPrimary,
                       ),
                     ),
                   ],

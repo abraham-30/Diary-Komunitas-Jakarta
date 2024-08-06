@@ -1,10 +1,12 @@
 import 'package:diary_komunitas_jakarta/components/appbars/floating_navbar.dart';
 import 'package:diary_komunitas_jakarta/custom_style/app_color.dart';
 import 'package:diary_komunitas_jakarta/components/buttons/custom_btn_primary.dart';
+import 'package:diary_komunitas_jakarta/custom_style/app_text_styles.dart';
 import 'package:diary_komunitas_jakarta/pages/article.dart';
 import 'package:diary_komunitas_jakarta/pages/beranda.dart';
 import 'package:diary_komunitas_jakarta/pages/community.dart';
 import 'package:diary_komunitas_jakarta/pages/login.dart';
+import 'package:diary_komunitas_jakarta/pages/pelaporan.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -60,6 +62,10 @@ class _ProfilePageState extends State<ProfilePage> {
           );
           break;
         case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PelaporanPage())
+          );
           break;
         case 4:
           break;
@@ -70,28 +76,29 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            controller: _pageController,
-            child: SafeArea(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              controller: _pageController,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.07
+                  horizontal: MediaQuery.of(context).size.width * 0.07,
+                  vertical: MediaQuery.of(context).size.height * 0.03
                 ),
                 child: Container(
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Edit Profile',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontFamily: 'PlusJakarta',
-                          fontSize: MediaQuery.of(context).size.width * 0.067,
-                          fontWeight: FontWeight.bold,
                           color: AppColors.dkj,
+                          fontSize: AppTextStyles.header,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: AppTextStyles.fontFamilyPrimary,
                         ),
                       ),
                       Padding(
@@ -175,15 +182,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         child: Column(
                           children: [
-                          SizedBox(
+                          const SizedBox(
                             width: double.infinity,
                             child: Text(
                               'Detail Pribadi',
                               style: TextStyle(
-                                fontFamily: 'PlusJakarta',
-                                fontSize: MediaQuery.of(context).size.width * 0.057,
-                                fontWeight: FontWeight.bold,
                                 color: AppColors.dkj,
+                                fontSize: AppTextStyles.smallHeader,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: AppTextStyles.fontFamilyPrimary,
                               ),
                             ),
                           ),
@@ -195,33 +202,33 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 Column(
                                   children:[
-                                    SizedBox(
+                                    const SizedBox(
                                       width: double.infinity,
                                       child: Text(
                                         'Nama Depan',
                                         style: TextStyle(
-                                          fontFamily: 'PlusJakarta',
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
                                           color: Colors.black,
+                                          fontFamily: AppTextStyles.fontFamilyPrimary,
+                                          fontSize: AppTextStyles.label1,                                 
                                         ),
                                       ),
                                     ),  
                                     TextFormField(
                                       style: const TextStyle(
-                                        fontFamily: 'PlusJakarta',
+                                        fontFamily: AppTextStyles.fontFamilyPrimary,
                                       ),
                                       enabled: _isEditing,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: 'Metiu',
                                         hintStyle: TextStyle(
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,
+                                          fontSize: AppTextStyles.label1,
                                         ),
-                                        focusedBorder: const UnderlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.dkj
                                           ),
                                         ),
-                                        contentPadding: const EdgeInsets.all(10)
+                                        contentPadding: EdgeInsets.all(10)
                                       ),
                                     ),                        
                                   ]
@@ -231,20 +238,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),            
                                 Column(
                                   children:[
-                                    SizedBox(
+                                    const SizedBox(
                                       width: double.infinity,
                                       child: Text(
                                         'Nama Tengah',
                                         style: TextStyle(
-                                          fontFamily: 'PlusJakarta',
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
                                           color: Colors.black,
+                                          fontSize: AppTextStyles.label1,  
+                                          fontFamily: AppTextStyles.fontFamilyPrimary                                
                                         ),
                                       ),
                                     ),  
                                     TextFormField(
                                       style: const TextStyle(
-                                        fontFamily: 'PlusJakarta',
+                                        fontFamily: AppTextStyles.fontFamilyPrimary,
                                       ),
                                       enabled: _isEditing,
                                       decoration: InputDecoration(
@@ -267,33 +274,33 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),                                 
                                 Column(
                                   children:[
-                                    SizedBox(
+                                    const SizedBox(
                                       width: double.infinity,
                                       child: Text(
                                         'Nama Belakang',
                                         style: TextStyle(
-                                          fontFamily: 'PlusJakarta',
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
                                           color: Colors.black,
+                                          fontSize: AppTextStyles.label1,                                  
+                                          fontFamily: AppTextStyles.fontFamilyPrimary,
                                         ),
                                       ),
                                     ),  
                                     TextFormField(
                                       style: const TextStyle(
-                                        fontFamily: 'PlusJakarta',
+                                        fontFamily: AppTextStyles.fontFamilyPrimary,
                                       ),
                                       enabled: _isEditing,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: 'Leviothniel',
                                         hintStyle: TextStyle(
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,
+                                          fontSize: AppTextStyles.label1,
                                         ),
-                                        focusedBorder: const UnderlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.dkj
                                           ),
                                         ),
-                                        contentPadding: const EdgeInsets.all(10)
+                                        contentPadding: EdgeInsets.all(10)
                                       ),
                                     ),                        
                                   ]
@@ -303,33 +310,33 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),     
                                 Column(
                                   children:[
-                                    SizedBox(
+                                    const SizedBox(
                                       width: double.infinity,
                                       child: Text(
                                         'Alamat',
                                         style: TextStyle(
-                                          fontFamily: 'PlusJakarta',
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
                                           color: Colors.black,
+                                          fontSize: AppTextStyles.label1,
+                                          fontFamily: AppTextStyles.fontFamilyPrimary,
                                         ),
                                       ),
                                     ),  
                                     TextFormField(
                                       style: const TextStyle(
-                                        fontFamily: 'PlusJakarta',
+                                        fontFamily: AppTextStyles.fontFamilyPrimary,
                                       ),
                                       enabled: _isEditing,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: 'Jalan Senam No.45, Kec. Tanah Sareal, Kota Bogor',
                                         hintStyle: TextStyle(
-                                          fontSize: MediaQuery.of(context).size.width * 0.043,
+                                          fontSize: AppTextStyles.label1,
                                         ),
-                                        focusedBorder: const UnderlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.dkj
                                           ),
                                         ),
-                                        contentPadding: const EdgeInsets.all(10)
+                                        contentPadding: EdgeInsets.all(10)
                                       ),
                                     ),                        
                                   ]
@@ -342,15 +349,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Column(
                         children: [
-                        SizedBox(
+                        const SizedBox(
                           width: double.infinity,
                           child: Text(
                             'Detail Akun',
                             style: TextStyle(
-                              fontFamily: 'PlusJakarta',
-                              fontSize: MediaQuery.of(context).size.width * 0.057,
-                              fontWeight: FontWeight.bold,
                               color: AppColors.dkj,
+                              fontSize: AppTextStyles.smallHeader,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: AppTextStyles.fontFamilyPrimary,
                             ),
                           ),
                         ),           
@@ -362,33 +369,33 @@ class _ProfilePageState extends State<ProfilePage> {
                             children: [
                               Column(
                                 children:[
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       'Username',
                                       style: TextStyle(
-                                        fontFamily: 'PlusJakarta',
-                                        fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
                                         color: Colors.black,
+                                        fontSize: AppTextStyles.label1,                    
+                                        fontFamily: AppTextStyles.fontFamilyPrimary,
                                       ),
                                     ),
                                   ),  
                                   TextFormField(
                                     style: const TextStyle(
-                                      fontFamily: 'PlusJakarta',
+                                      fontFamily: AppTextStyles.fontFamilyPrimary,
                                     ),
                                     enabled: _isEditing,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'MetInoNiel',
                                       hintStyle: TextStyle(
-                                        fontSize: MediaQuery.of(context).size.width * 0.043,
+                                        fontSize: AppTextStyles.label1,
                                       ),
-                                      focusedBorder: const UnderlineInputBorder(
+                                      focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: AppColors.dkj
                                         ),
                                       ),
-                                      contentPadding: const EdgeInsets.all(10)
+                                      contentPadding: EdgeInsets.all(10)
                                     ),
                                   ),                        
                                 ]
@@ -398,13 +405,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),     
                               Column(
                                 children:[
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       'Password',
                                       style: TextStyle(
                                         fontFamily: 'PlusJakarta',
-                                        fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
+                                        fontSize: AppTextStyles.label1,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -414,17 +421,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                       fontFamily: 'PlusJakarta',
                                     ),
                                     enabled: _isEditing,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: '**********',
                                       hintStyle: TextStyle(
-                                        fontSize: MediaQuery.of(context).size.width * 0.043,
+                                        fontSize: AppTextStyles.label1,
                                       ),
-                                      focusedBorder: const UnderlineInputBorder(
+                                      focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: AppColors.dkj
                                         ),
                                       ),
-                                      contentPadding: const EdgeInsets.all(10)
+                                      contentPadding: EdgeInsets.all(10)
                                     ),
                                   ),                        
                                 ]
@@ -434,33 +441,33 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),     
                               Column(
                                 children:[
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       'Email',
                                       style: TextStyle(
-                                        fontFamily: 'PlusJakarta',
-                                        fontSize: MediaQuery.of(context).size.width * 0.043,                                  fontWeight: FontWeight.w400,
                                         color: Colors.black,
+                                        fontFamily: AppTextStyles.fontFamilyPrimary,
+                                        fontSize: AppTextStyles.label1,
                                       ),
                                     ),
                                   ),  
                                   TextFormField(
                                     style: const TextStyle(
-                                      fontFamily: 'PlusJakarta',
+                                      fontFamily: AppTextStyles.fontFamilyPrimary,
                                     ),
                                     enabled: _isEditing,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'lorem.ipsum@binus.ac.id',
                                       hintStyle: TextStyle(
-                                        fontSize: MediaQuery.of(context).size.width * 0.043,
+                                        fontSize: AppTextStyles.label1,
                                       ),
-                                      focusedBorder: const UnderlineInputBorder(
+                                      focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: AppColors.dkj
                                         ),
                                       ),
-                                      contentPadding: const EdgeInsets.all(10)
+                                      contentPadding: EdgeInsets.all(10)
                                     ),
                                   ),                        
                                 ]
@@ -508,7 +515,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                               SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.15
+                                height: MediaQuery.of(context).size.height * 0.1
                               ),
                             ],
                           ),
@@ -520,12 +527,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-          ),
-          FloatingBottomNavBar(
-            selectedIndex: _selectedIndex,
-            onItemTapped: _onItemTapped
-          )
-        ],
+            FloatingBottomNavBar(
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped
+            )
+          ],
+        )
       )
     );
   }
